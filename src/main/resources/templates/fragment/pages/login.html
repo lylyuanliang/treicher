@@ -1,0 +1,33 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="page_login" class="pages" th:name="login">
+    <div class="admin-login-background">
+        <!--<div class="admin-header">-->
+        <!--<img src="image/ex_logo.png" class="admin-logo">-->
+        <!--</div>-->
+        <form class="layui-form" action="">
+            <div>
+                <i class="layui-icon layui-icon-username admin-icon admin-icon-username"></i>
+                <input type="text" name="username" placeholder="请输入用户名"
+                       autocomplete="off"
+                       class="layui-input admin-input admin-input-username" th:title="建议输入中文">
+            </div>
+            <div>
+                <i class="layui-icon layui-icon-password admin-icon admin-icon-password"></i>
+                <input type="password" name="password"
+                       placeholder="请输入密码"
+                       autocomplete="off"
+                       class="layui-input admin-input">
+            </div>
+            <!--<div>
+                <input type="text" name="verify"
+                       placeholder="请输入验证码"
+                       autocomplete="off"
+                       class="layui-input admin-input admin-input-verify">
+                <img class="admin-captcha" src="">
+            </div>-->
+            <div class="log-button">
+                <button class="layui-btn admin-button" type="button" id="logon">注册</button>
+                <button class="layui-btn admin-button" type="button" id="login">登陆</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>实验</title>
+    <header th:replace="fragment/common/import_css::css_fragment_layui"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_common"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_index"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_count"></header>
+</head>
+<body th:name="treicher">
+
+    <!--人员准备-->
+    <div th:replace="fragment/pages/ready::page_ready"></div>
+    <!--实验测试-->
+    <div th:replace="fragment/pages/testing::page_testing"></div>
+    <!--等待-->
+    <div th:replace="fragment/pages/waiting::page_waiting"></div>
+    <!--结果页-->
+    <div th:replace="fragment/pages/result::page_result"></div>
+
+    <!--下一试次-->
+    <div class="pages" name="next-testing">
+        <button class="layui-btn admin-button" type="button" id="next-testing">下一试次</button>
+    </div>
+
+    <div class="tips">
+        <button class="layui-btn">
+            当前<span class="layui-badge layui-bg-gray" th:name="person_online">1</span>在线
+        </button>
+    </div>
+
+    <!--按钮-->
+    <div th:replace="fragment/pages/button::page_button"></div>
+
+    <footer th:replace="fragment/common/import_js::js_fragment_common"></footer>
+    <script th:inline="javascript">
+        //取出后台数据，这部分代码只能放在这里
+        //虚拟用户列表
+        let currentUser = [[${currentUser}]];
+        //当前登录用户
+        let userList = [[${userList}]];
+        //用户号，主要用户查找虚拟数据
+        let userNum = [[${userNum}]];
+    </script>
+    <footer th:replace="fragment/common/import_js::js_fragment_treicher"></footer>
+</body>
+</html>

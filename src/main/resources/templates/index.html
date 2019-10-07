@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>实验</title>
+    <header th:replace="fragment/common/import_css::css_fragment_layui"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_common"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_index"></header>
+</head>
+<body th:name="index">
+    <!--实验介绍-->
+    <div th:replace="fragment/pages/profile::page_profile"></div>
+    <div th:replace="fragment/pages/profile2::page_profile2"></div>
+    <!--举例说明-->
+    <div th:replace="fragment/pages/example::page_example"></div>
+    <!--实验奖励-->
+    <div th:replace="fragment/pages/reward::page_reward"></div>
+    <!--实验规则检测-->
+    <div th:replace="fragment/pages/check::page_check"></div>
+
+    <!--按钮-->
+    <div th:replace="fragment/pages/button::page_button"></div>
+
+    <footer th:replace="fragment/common/import_js::js_fragment_common"></footer>
+    <footer th:replace="fragment/common/import_js::js_fragment_index"></footer>
+</body>
+</html>

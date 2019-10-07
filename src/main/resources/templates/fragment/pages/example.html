@@ -1,0 +1,125 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="page_example" class="pages" th:name="example">
+    <div class="content-parts">
+        <ul class="layui-timeline">
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
+                    <h3 class="layui-timeline-title">举例说明</h3>
+                    <table class="layui-table table-opacity">
+                        <colgroup>
+                            <col width="150">
+                            <col width="500">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td th:colspan="3" class="text-center" style="border-top: 3px solid;border-left: 3px solid;border-right: 3px solid; font-size: 22px;">
+                                    <p>试次一</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td th:colspan="3" class="text-center" style="border-left: 3px solid;border-right: 3px solid;">
+                                    <p>公共目标120个任务币</p>
+                                    <p>个人目标35个任务币</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td th:rowspan="6" class="text-center" style="border-left: 3px solid;">
+                                    <p>第1轮</p>
+                                </td>
+                                <td>第1轮后，1号组员向个人池投入35个，向公共池投入0个。</td>
+                                <td th:rowspan="6" style="border-right: 3px solid;">
+                                    <p>第1轮中，团队6人共向公共池投入83个。</p>
+                                    <p>在第1轮分配中，2号，3号，4号，5号组员他们将失去所有任务币，因为他们既没有达到公共目标，也没有达到个人目标。</p>
+                                    <p>1号组员能得到剩余的任务币：50-35=15个，因为他/她达到了个人目标。</p>
+                                    <p>6号组员能得到剩余的任务币：50-35=15个，因为他/她达到了个人目标。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>第1轮后，2号组员向个人池投入0个，向公共池投入20个。</td>
+                            </tr>
+                            <tr>
+                                <td>第1轮后，3号组员向个人池投入0个，向公共池投入25个。</td>
+                            </tr>
+                            <tr>
+                                <td>第1轮后，4号组员向个人池投入10个，向公共池投入20个。</td>
+                            </tr>
+                            <tr>
+                                <td>第1轮后，5号组员向个人池投入0个，向公共池投入18个。</td>
+                            </tr>
+                            <tr>
+                                <td>第1轮后，6号组员向个人池投入35个，向公共池投入0个。</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" style="border-left: 3px solid;">
+                                    <p>第2轮</p>
+                                </td>
+                                <td th:colspan="3" class="text-center" style="border-right: 3px solid;">
+                                    <p>公共目标不变，个人目标不变，团队成员不变，接下来进行第2轮分配。</p>
+                                    <p>第2轮分配后，进行下一试次实验。不反馈第2轮分配的结果（因为下一试次重新匹配团队成员）。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td th:colspan="3" class="text-center" style="border-top: 3px solid;border-left: 3px solid;border-right: 3px solid; font-size: 22px;">
+                                    <p>试次二</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td th:colspan="3" class="text-center" style="border-left: 3px solid;border-right: 3px solid;">
+                                    <p>公共目标120个任务币</p>
+                                    <p>个人目标35个任务币</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td th:rowspan="6" class="text-center" style="border-left: 3px solid;">
+                                    <p>第1轮</p>
+                                </td>
+                                <td>第1轮后，1号组员向个人池投入35个，向公共池投入0个。</td>
+                                <td th:rowspan="6" style="border-right: 3px solid;">
+                                    <p>第1轮中，团队6人共向公共池投入115个。</p>
+                                    <p>在这个例子中，2号，3号，4号，5号，6号组员他们将失去所有任务币，因为他们既没有达到公共目标，也没有达到个人目标。</p>
+                                    <p>1号组员能得到剩余的任务币：50-35=15个，因为他/她达到了个人目标。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>第1轮后，2号组员向个人池投入0个，向公共池投入30个。</td>
+                            </tr>
+                            <tr>
+                                <td>第1轮后，3号组员向个人池投入0个，向公共池投入20个。</td>
+                            </tr>
+                            <tr>
+                                <td>第1轮后，4号组员向个人池投入0个，向公共池投入20个。</td>
+                            </tr>
+                            <tr>
+                                <td>第1轮后，5号组员向个人池投入0个，向公共池投入20个。</td>
+                            </tr>
+                            <tr>
+                                <td>第1轮后，6号组员向个人池投入0个，向公共池投入25个。</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" style="border-left: 3px solid;">
+                                    <p>第2轮</p>
+                                </td>
+                                <td th:colspan="3" class="text-center" style="border-right: 3px solid;">
+                                    <p>公共目标不变，个人目标不变，团队成员不变，接下来进行第2轮分配。</p>
+                                    <p>第2轮分配后，进行下一试次实验。不反馈第2轮分配的结果（因为下一试次重新匹配团队成员）。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td th:colspan="3" class="text-center" style="border-top: 3px solid; border-bottom: 3px solid;border-left: 3px solid;border-right: 3px solid;">
+                                    <p><strong>共进行16试次。</strong></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
+                    <div class="layui-timeline-title"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

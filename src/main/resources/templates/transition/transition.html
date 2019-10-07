@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理-过渡页面</title>
+    <header th:replace="fragment/common/import_css::css_fragment_layui"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_common"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_transition"></header>
+</head>
+<body>
+    <div class="button-parts" name="start">
+        <button class="layui-btn admin-button" type="button" id="start">开始实验</button>
+    </div>
+
+    <div class="progress">
+        <p>匹配中，请稍后</p>
+        <div class="layui-progress layui-progress-big" lay-showPercent="true" lay-filter="pgr">
+            <div class="layui-progress-bar layui-bg-blue" lay-percent="0%"></div>
+        </div>
+    </div>
+
+    <footer th:replace="fragment/common/import_js::js_fragment_common"></footer>
+    <footer th:replace="fragment/common/import_js::js_fragment_transition"></footer>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="page_ready" class="pages" th:name="ready">
+    <div class="content-parts">
+        <ul class="layui-timeline">
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
+                    <h3 class="layui-timeline-title">准备</h3>
+                    <table class="layui-table table-opacity">
+                        <tbody>
+                        <tr th:each="user: ${userList}">
+                            <span th:if="${user.userName==currentUser}">
+                                <td>
+                                    <p class="text-indent" th:text="${currentUser}">
+                                    </p>
+                                </td>
+                                <td>
+                                    <div class="hide" name="ready-text-part">
+                                        <div class="ready-progress"></div>
+                                        <div class="ready-text">准备就绪</div>
+                                    </div>
+                                    <div name="ready-button-part">
+                                        <button class="layui-btn layui-btn-radius layui-btn-sm" name="read-button">准备
+                                        </button>
+                                    </div>
+                                </td>
+                            </span>
+                            <span th:if="${user.userName} != ${currentUser}">
+                                <td class="text-indent" th:text="${user.userName}"></td>
+                                <td>
+                                    <div class="hide" name="ready-text-part-others">
+                                        <div class="ready-progress"></div>
+                                        <div class="ready-text">准备就绪</div>
+                                    </div>
+                                    <div class="" name="readying-text-part-others">
+                                        <div class="ready-text">准备中</div>
+                                    </div>
+                                </td>
+                            </span>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
+                    <div class="layui-timeline-title"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="count-down">
+        <div class="overlay"></div>
+        <div class="cell">
+            <div class="num">10 9 8 7 6 5 4 3 2 1 0</div>
+        </div>
+    </div>
+</div>

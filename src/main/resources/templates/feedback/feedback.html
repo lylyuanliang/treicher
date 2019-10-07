@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>反馈</title>
+    <header th:replace="fragment/common/import_css::css_fragment_layui"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_common"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_index"></header>
+</head>
+<body>
+<!--实验反馈-->
+<div th:replace="fragment/pages/feedback::page_feedback"></div>
+<!--实验结束-->
+<div th:replace="fragment/pages/end::page_end"></div>
+
+<!--按钮-->
+<div class="buttons" th:name="button">
+    <div class="button-parts">
+        <div class="button-feedback">
+            <button class="layui-btn layui-btn-radius layui-btn-normal" id="feedback-next">下一页</button>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="fragment/common/import_js::js_fragment_common"></footer>
+<script>
+
+</script>
+<footer th:replace="fragment/common/import_js::js_fragment_feedback"></footer>
+</body>
+</html>

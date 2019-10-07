@@ -1,0 +1,95 @@
+body {
+    background: url(../images/background.jpg) no-repeat;
+    background-size: cover;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+}
+
+::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: #535353;
+}
+
+::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background: #EDEDED;
+}
+
+button {
+    background-color: #0a3e6e7d!important;
+}
+
+tbody tr:hover {
+    background: none!important;
+}
+
+tbody td:hover {
+    background-color: #1455850f!important
+}
+
+.content-parts td p {
+    margin-bottom: 1%;
+}
+
+.hide {
+    display: none;
+}
+
+.tips {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.waiting {
+    text-align: center;
+}
+.waiting img {
+    width: 21%;
+}
+.waiting-text {
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    top: 45%;
+    bottom: 0;
+    font-size: 22px;
+}
+@supports (display:none) {
+    dot {
+        display: inline-block;
+        width: 3ch;
+        text-indent: -1ch;
+        vertical-align: bottom;
+        overflow: hidden;
+        animation: dot 1s infinite step-start both;
+        font-family: Consolas, Monaco, monospace;
+    }
+}
+
+@keyframes dot {
+    33% { text-indent: 0; }
+    66% { text-indent: -2ch; }
+}
+
+@-webkit-keyframes rotation{
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+.an{
+    -webkit-transform: rotate(360deg);
+    animation: rotation 3s linear infinite;
+    -moz-animation: rotation 3s linear infinite;
+    -webkit-animation: rotation 3s linear infinite;
+    -o-animation: rotation 3s linear infinite;
+}
+
+td {
+    color: #000000!important;
+    font-weight: bold;
+}

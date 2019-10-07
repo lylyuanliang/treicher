@@ -1,0 +1,132 @@
+body {
+    width: calc(90vw);
+    height: calc(90vh);
+    font-size: 16px;
+}
+
+.layui-timeline-item:before {
+    background: #083a6973;
+}
+
+.layui-input-block {
+    margin-left: 2%;
+}
+
+.pages {
+    width: 80%;
+    height: 99%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.buttons {
+    height: 6%;
+    width: 80%;
+    position: fixed;
+    bottom: 3%;
+    margin-left: 10%;
+}
+.pages {
+    display: none;
+}
+
+.content-parts {
+    width: 98%;
+    height: 95%;
+    margin-left: 1%;
+    padding-top: 1%;
+    overflow: auto;
+}
+
+.button-parts {
+    width: 78%;
+    position: fixed;
+    margin-left: 1%;
+    bottom: 0;
+    display: flex;
+    height: 8%;
+}
+
+.button-right {
+    width: 50%;
+    right: 0;
+    padding-left: 1%;
+    visibility: hidden;
+}
+
+.button-left {
+    width: 50%;
+    right: 0;
+    text-align: right;
+    padding-right: 1%;
+    visibility: hidden;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.table-opacity {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+td, th {
+    border-color: #2196F3!important;
+}
+
+.text-indent {
+    text-indent:28px
+}
+
+[name="testing"] input, [name="result"] input {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #3f51b591;
+    text-align: center;
+}
+
+[name="result"] table {
+    width: 84%;
+}
+
+[name="testing"] p {
+    margin-top: 9px;
+}
+[name="next-testing"] {
+    display: none;
+}
+[name="next-testing"] button {
+    margin-left: 46%;
+    margin-top: 26%;
+}
+
+.waiting img {
+    width: 6%;
+    margin-top: 11%;
+    margin-right: 4%;
+}
+
+thead tr {
+    background: #0a3d6c1f!important;
+}
+thead th {
+    text-align: center!important;
+}
+
+.button-feedback {
+    padding-left: 50%;
+}
+
+[name="end"] td {
+    text-align: center;
+    font-size: 24px;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+[name="ready"] .content-parts {
+    position: absolute;
+    z-index: 11;
+    height: 70%;
+}

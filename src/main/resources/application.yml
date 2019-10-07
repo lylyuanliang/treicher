@@ -1,0 +1,20 @@
+#端口 默认就是8080, 可以不配置
+server:
+  port: 8080
+  servlet:
+    context-path: /zm
+    session:
+      timeout: 86400
+com:
+  zm:
+    excel:
+      path: "D:/fileSave/treicher/excel"
+    no-login:
+      uri: "/login,/doLogin,/doLogon,/,/webjars/*,/css/*,/images/*,/js/*,/index,/clear"
+
+spring:
+  thymeleaf:
+    cache: false
+  mvc:
+    favicon:
+      enabled: false
