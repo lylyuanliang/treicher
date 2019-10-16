@@ -2,6 +2,7 @@ package com.zoumi.treicher.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.zoumi.treicher.bean.VirtualDataBean;
 import com.zoumi.treicher.common.ExcelUtil;
 import com.zoumi.treicher.common.OtherConstants;
 import com.zoumi.treicher.common.ResponseUtil;
@@ -11,6 +12,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +37,8 @@ public class TestingController extends BaseController {
      */
     private static final String LAST_WARDS_ROUND_NUM = "_round_num";
 
+    @Autowired
+    private VirtualDataBean virtualDataBean;
 
     private static final Logger LOG = LoggerFactory.getLogger(TestingController.class);
 
@@ -66,7 +71,7 @@ public class TestingController extends BaseController {
             List<TaskVo> taskVos = new ArrayList<>(2);
             taskVos.add(taskVo);
 
-            LOG.info("{}的实验提交请求报文：{}", userName, JSONObject.toJSONString(taskVo));
+            LOG.info("【{}】的实验提交请求报文：{}", userName, JSONObject.toJSONString(taskVo));
 
             String key = userName + LAST_WARDS;
             List<TestingVo> testingVoList = (List<TestingVo>) session.getAttribute(key);
@@ -144,8 +149,6 @@ public class TestingController extends BaseController {
 
             String testNum = (String) session.getAttribute(key4TestNum);
             String roundNum = (String) session.getAttribute(key4RoundNum);
-
-
 
             if(StringUtils.isBlank(testNum)) {
                 testNum = "1";
@@ -247,5 +250,38 @@ public class TestingController extends BaseController {
         session.setAttribute(key, i);
 
         return ResponseUtil.success(i);
+    }
+
+    @GetMapping("/getVirtualData")
+    public String getVirtualData() {
+        String useLocal = "Y";
+        try {
+            String virtualDataLocal = virtualDataBean.getVirtualDataLocal();
+            String virtualDataVos = null;
+            if(useLocal.equals(virtualDataLocal)) {
+                //使用本地文件
+                virtualDataVos = virtualDataBean.getVirtualDataVos();
+                virtualDataVos = replaceKeyWords(virtualDataVos);
+            }
+            return ResponseUtil.success(virtualDataVos);
+        }catch (Exception e) {
+            LOG.error("获取虚拟被试数据异常", e);
+            return ResponseUtil.error("获取虚拟被试数据异常");
+        }
+    }
+
+    /**
+     * 替换key
+     *      因为之前使用virtualDataConstants.js里面的常量①，
+     *      现在改成后台直接读取excel②，两种方式产生的对象key不一样，为了兼容①，就将②的key转①的
+     * @param virtualData
+     */
+    private String replaceKeyWords(String virtualData) {
+        virtualData = virtualData.replace("sequenceNum", "SEQUENCE_NUM")
+                .replace("testingDataVos", "TEST_DATA")
+                .replace("commonality", "COMMONALITY")
+                .replace("personNum", "PERSON_NUM")
+                .replace("personal", "PERSONAL");
+        return virtualData;
     }
 }

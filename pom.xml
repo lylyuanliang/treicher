@@ -59,10 +59,17 @@
         </dependency>
 
         <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>js-xlsx</artifactId>
+            <version>0.14.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>4.0.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
@@ -106,7 +113,6 @@
     </dependencies>
 
     <build>
-        <finalName>treicher</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

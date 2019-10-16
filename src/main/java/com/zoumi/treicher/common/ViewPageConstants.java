@@ -8,7 +8,8 @@ public enum ViewPageConstants {
     LOGIN("login/login", "登陆页"),
     TRANSITION("transition/transition", "过渡页面"),
     TREICHER("treicher/treicher", "实验页面"),
-    FEEDBACK("feedback/feedback", "反馈页面");
+    FEEDBACK("feedback/feedback", "反馈页面"),
+    VIRTUAL("virtual/virtual", "虚拟数据展示页面");
 
     private String url;
     private String name;

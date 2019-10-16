@@ -2,14 +2,11 @@ package com.zoumi.treicher.common.config;
 
 import com.zoumi.treicher.common.OtherConstants;
 import com.zoumi.treicher.filter.LoginFilter;
-import com.zoumi.treicher.vo.LoginFilterProperty;
-import org.apache.commons.lang.StringUtils;
+import com.zoumi.treicher.property.LoginFilterProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.DispatcherServlet;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.zoumi.treicher;
 
-import com.zoumi.treicher.vo.ExcelProperty;
-import com.zoumi.treicher.vo.LoginFilterProperty;
+import com.zoumi.treicher.property.ExcelProperty;
+import com.zoumi.treicher.property.LoginFilterProperty;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

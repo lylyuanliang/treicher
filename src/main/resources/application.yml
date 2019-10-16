@@ -9,8 +9,14 @@ com:
   zm:
     excel:
       path: "D:/fileSave/treicher/excel"
+      # 是否使用本地文件 Y表示使用，其他值表示不使用
+      virtual-data-local: "Y"
+      # 文件路径
+      virtual-data-path: "D:/fileSave/邹密/虚拟数据2"
+      # 文件名
+      virtual-data-name: "虚拟被试数据.xlsx"
     no-login:
-      uri: "/login,/doLogin,/doLogon,/,/webjars/*,/css/*,/images/*,/js/*,/index,/clear"
+      uri: "/login,/doLogin,/doLogon,/,/webjars/*,/css/*,/images/*,/js/*,/index,/clear,/virtual,/getVirtualData"
 
 spring:
   thymeleaf:

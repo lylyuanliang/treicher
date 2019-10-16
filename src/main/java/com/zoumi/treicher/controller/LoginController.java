@@ -2,7 +2,7 @@ package com.zoumi.treicher.controller;
 
 import com.zoumi.treicher.common.OtherConstants;
 import com.zoumi.treicher.common.ResponseUtil;
-import com.zoumi.treicher.vo.ExcelProperty;
+import com.zoumi.treicher.property.ExcelProperty;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +20,7 @@ public class LoginController extends BaseController {
     private static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
-    ExcelProperty excelProperty;
+    private ExcelProperty excelProperty;
     /**
      * 登陆
      * @return

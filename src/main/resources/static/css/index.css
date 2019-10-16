@@ -130,3 +130,21 @@ thead th {
     z-index: 11;
     height: 70%;
 }
+[name="virtual"] table {
+    width: 98%;
+}
+.border-strong {
+    border: 2px solid #2196f3;
+}
+.border-left-strong {
+    border-left: 2px solid #2196f3;
+}
+.border-right-strong {
+    border-right: 2px solid #2196f3;
+}
+.border-bottom-strong {
+    border-bottom: 2px solid #2196f3!important;
+}
+.border-top-strong {
+    border-top: 2px solid #2196f3;
+}

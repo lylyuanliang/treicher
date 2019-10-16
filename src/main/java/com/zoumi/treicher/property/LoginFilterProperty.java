@@ -1,4 +1,4 @@
-package com.zoumi.treicher.vo;
+package com.zoumi.treicher.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

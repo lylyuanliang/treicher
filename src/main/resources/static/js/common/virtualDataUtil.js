@@ -2,6 +2,7 @@
  * 虚拟数据工具类
  */
 import Constants from "./constants.js";
+import Common from "./common.js";
 
 /**
  * 个人池
@@ -54,13 +55,35 @@ export default class VirtualDataUtil {
      */
     static getVirtualDataList(sequenceNum) {
         let virtualDataList = [];
-        $.each(Constants.VIRTUAL_DATA.DATA, function (index, data) {
-            if(sequenceNum == data.SEQUENCE_NUM) {
-                //找到被试虚拟数据
-                virtualDataList = data.TEST_DATA;
-                return false;
+        let url = `${Common.getContextPath()}/getVirtualData`;
+        Common.$ajax({
+            url: url,
+            type: "get",
+            async: false,
+            data: {},
+            success(data) {
+                let rtnCode = data["returnCode"];
+                if(Constants.RTN_CODE.SUCCESS == rtnCode) {
+                    // Common.showMessage("成功");
+                    let virData = data["data"];
+                    let virtualData = Constants.VIRTUAL_DATA.DATA;
+                    if(virData) {
+                        //virData不为空，表示读取的excel文件
+                        virtualData = JSON.parse(virData);
+                    }
+                    $.each(virtualData, function (index, data) {
+                        if(sequenceNum == data.SEQUENCE_NUM) {
+                            //找到被试虚拟数据
+                            virtualDataList = data.TEST_DATA;
+                            return false;
+                        }
+                    });
+                }else {
+                    Common.showMessage(data["returnMessage"]);
+                }
             }
         });
+
         return virtualDataList;
     }
 
@@ -148,6 +171,5 @@ export default class VirtualDataUtil {
         });
         return commonality;
     }
-
 
 }

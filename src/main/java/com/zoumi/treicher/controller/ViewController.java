@@ -1,12 +1,16 @@
 package com.zoumi.treicher.controller;
 
+import com.zoumi.treicher.common.ExcelUtil;
 import com.zoumi.treicher.common.OtherConstants;
+import com.zoumi.treicher.common.ResponseUtil;
 import com.zoumi.treicher.common.ViewPageConstants;
 import com.zoumi.treicher.service.IUserService;
+import com.zoumi.treicher.property.ExcelProperty;
 import com.zoumi.treicher.vo.UserVo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,6 +22,11 @@ public class ViewController extends BaseController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private ExcelProperty excelProperty;
+
+    private static final Logger LOG = LoggerFactory.getLogger(ViewController.class);
 
     /**
      * 首页
@@ -88,6 +97,26 @@ public class ViewController extends BaseController {
     public ModelAndView feedback(ModelAndView modelAndView) {
 
         modelAndView.setViewName(ViewPageConstants.FEEDBACK.getUrl());
+        return  modelAndView;
+    }
+
+    /**
+     * 反馈页面
+     * @param modelAndView
+     * @return
+     */
+    @GetMapping("/virtual")
+    public ModelAndView virtual(ModelAndView modelAndView) {
+        String res ;
+        try {
+            String virtualData = ExcelUtil.importData(excelProperty.getVirtualDataPath(), excelProperty.getVirtualDataName());
+            res = ResponseUtil.success(virtualData);
+        }catch (Exception e) {
+            LOG.error("展示虚拟数据异常", e);
+            res = ResponseUtil.error("数据获取异常");
+        }
+        modelAndView.addObject("virtualRes", res);
+        modelAndView.setViewName(ViewPageConstants.VIRTUAL.getUrl());
         return  modelAndView;
     }
 }

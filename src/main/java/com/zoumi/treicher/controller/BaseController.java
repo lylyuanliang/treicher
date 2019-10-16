@@ -58,6 +58,11 @@ public class BaseController {
             //增一
             max ++;
             max = max % 16;
+
+            if(max == 0) {
+                max = 16;
+            }
+
             String maxStr = String.valueOf(max);
             //保存最大值
             WriteMaxUserNum(maxStr, paramPath);

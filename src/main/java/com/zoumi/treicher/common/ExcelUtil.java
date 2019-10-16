@@ -2,27 +2,30 @@ package com.zoumi.treicher.common;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zoumi.treicher.vo.TaskVo;
+import com.zoumi.treicher.vo.TestingDataVo;
 import com.zoumi.treicher.vo.TestingVo;
+import com.zoumi.treicher.vo.VirtualDataVo;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellAddress;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 /**
- * Excel 工具类
+ * Excel 工具类(这个工具类并不公用哈，凑合着看看吧)
  *   （POI）
  */
 public class ExcelUtil {
     private static final Logger LOG = LoggerFactory.getLogger(RowRelated.class);
 
+    private static final String ROW = "row";
+    private static final String CELL = "cell";
     private static final RowRelated ROW_RELATED = new RowRelated();
 
     /**
@@ -72,6 +75,117 @@ public class ExcelUtil {
         }
 
         return false;
+    }
+
+    public static String importData(String filePath, String fileName) throws IOException {
+        FileInputStream inputStream = new FileInputStream(filePath+"/" + fileName);
+        Workbook workbook = WorkbookFactory.create(inputStream);
+        //只读取第一个工作表
+        Sheet sheet=workbook.getSheetAt(0);
+        //获取所有行数
+        int rowNums = sheet.getPhysicalNumberOfRows();
+        List<VirtualDataVo> virtualDataVos = new ArrayList<>(16);
+        for(int i=1; i<rowNums; i++) {
+            Row row = sheet.getRow(i);
+            VirtualDataVo virtualDataVo = new VirtualDataVo();
+            List<TestingDataVo> testingDataVos = new ArrayList<>(8);
+
+            int lastRow = getMergedRegionIndex(sheet, i, 0, ROW);
+            virtualDataVo.setSequenceNum(getCellValue(row.getCell(0)));
+            int j = i;
+            for (; j <= lastRow; j++) {
+                //获取到每一行
+                Row rowData = sheet.getRow(j);
+                TestingDataVo testingDataVo = new TestingDataVo();
+                testingDataVo.setPersonNum(getCellValue(rowData.getCell(1)));
+                testingDataVo.setCommonality(getCellValue(rowData.getCell(2)));
+                testingDataVo.setPersonal(getCellValue(rowData.getCell(3)));
+                testingDataVos.add(testingDataVo);
+            }
+            if(i < j) {
+                i = -- j;
+            }
+
+            virtualDataVo.setTestingDataVos(testingDataVos);
+            virtualDataVos.add(virtualDataVo);
+        }
+        return JSONObject.toJSONString(virtualDataVos);
+    }
+
+    /**
+     * 获取合并单元格下标
+     * @param sheet
+     * @param row
+     * @param column
+     * @param rowOrCell
+     * @return
+     */
+    private static int getMergedRegionIndex(Sheet sheet,int row ,int column, String rowOrCell) {
+        int sheetMergeCount = sheet.getNumMergedRegions();
+        for (int i = 0; i < sheetMergeCount; i++) {
+            CellRangeAddress range = sheet.getMergedRegion(i);
+            int firstColumn = range.getFirstColumn();
+            int lastColumn = range.getLastColumn();
+            int firstRow = range.getFirstRow();
+            int lastRow = range.getLastRow();
+            if(row >= firstRow && row <= lastRow && column >= firstColumn && column <= lastColumn){
+                if(CELL.equals(rowOrCell)){
+                    return lastColumn;
+                }else if(ROW.equals(rowOrCell)) {
+                    return lastRow;
+                }
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 判断指定的单元格是否是合并单元格
+     * @param sheet
+     * @param row 行下标
+     * @param column 列下标
+     * @return
+     */
+    private static boolean isMergedRegion(Sheet sheet,int row ,int column) {
+        int sheetMergeCount = sheet.getNumMergedRegions();
+        for (int i = 0; i < sheetMergeCount; i++) {
+            CellRangeAddress range = sheet.getMergedRegion(i);
+            int firstColumn = range.getFirstColumn();
+            int lastColumn = range.getLastColumn();
+            int firstRow = range.getFirstRow();
+            int lastRow = range.getLastRow();
+            if(row >= firstRow && row <= lastRow){
+                if(column >= firstColumn && column <= lastColumn){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 获取单元格的值
+     * @param cell
+     * @return
+     */
+    private static String getCellValue(Cell cell) {
+        //判断单元格类型,获取对应数据
+        String cellValue = "";
+        CellType cellType = cell.getCellType();
+        if(cellType == CellType.STRING){
+            cellValue = cell.getStringCellValue();
+        }else if(cellType == CellType.NUMERIC){
+            double numericCellValue = cell.getNumericCellValue();
+            int number = (int) numericCellValue;
+            cellValue = String.valueOf(number);
+        }else if(cellType == CellType.BOOLEAN){
+            cellValue = String.valueOf(cell.getBooleanCellValue());
+        }else if(cellType == CellType.BLANK){
+            cellValue = "";
+        }else{
+            cellValue = String.valueOf(cell.getDateCellValue());
+        }
+        return cellValue;
     }
 
     /**
@@ -128,7 +242,7 @@ public class ExcelUtil {
     }
 
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         // 创建需要写入的数据列表
         List<TestingVo> dataVOList = new ArrayList<>(2);
         TestingVo testingVo = new TestingVo();
@@ -157,5 +271,11 @@ public class ExcelUtil {
 
         // 写入数据到工作簿对象内
         boolean flag = ExcelUtil.exportData(dataVOList, OtherConstants.Excel.CELL_HEADS_TESTING, "C:/Users/liurl/Desktop/zm/", "writeExample.xlsx");
+
+    }
+
+    public static void main(String[] args) throws IOException {
+        String ss = importData("D:/fileSave/邹密/虚拟数据1", "虚拟被试数据.xlsx");
+        System.out.println(ss);
     }
 }
