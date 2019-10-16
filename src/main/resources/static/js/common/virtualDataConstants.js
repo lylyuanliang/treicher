@@ -16,97 +16,97 @@ export const VIRTUAL_DATA = {
         {
             SEQUENCE_NUM: 1,
             TEST_DATA: [
-                {PERSON_NUM: 1, COMMONALITY: 22, PERSONAL: 0},
-                {PERSON_NUM: 2, COMMONALITY: 22, PERSONAL: 0},
-                {PERSON_NUM: 3, COMMONALITY: 22, PERSONAL: 0},
-                {PERSON_NUM: 4, COMMONALITY: 21, PERSONAL: 0},
-                {PERSON_NUM: 5, COMMONALITY: 21, PERSONAL: 0},
-            ]
-        }, {
-            SEQUENCE_NUM: 16,
-            TEST_DATA: [
-                {PERSON_NUM: 1, COMMONALITY: 22, PERSONAL: 0},
-                {PERSON_NUM: 2, COMMONALITY: 22, PERSONAL: 0},
-                {PERSON_NUM: 3, COMMONALITY: 22, PERSONAL: 0},
-                {PERSON_NUM: 4, COMMONALITY: 22, PERSONAL: 0},
-                {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
-            ]
-        }, {
-            SEQUENCE_NUM: 3,
-            TEST_DATA: [
-                {PERSON_NUM: 1, COMMONALITY: 23, PERSONAL: 0},
-                {PERSON_NUM: 2, COMMONALITY: 23, PERSONAL: 0},
-                {PERSON_NUM: 3, COMMONALITY: 22, PERSONAL: 0},
-                {PERSON_NUM: 4, COMMONALITY: 20, PERSONAL: 0},
-                {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
-            ]
-        }, {
-            SEQUENCE_NUM: 9,
-            TEST_DATA: [
-                {PERSON_NUM: 1, COMMONALITY: 24, PERSONAL: 0},
+                {PERSON_NUM: 1, COMMONALITY: 20, PERSONAL: 0},
                 {PERSON_NUM: 2, COMMONALITY: 24, PERSONAL: 0},
                 {PERSON_NUM: 3, COMMONALITY: 20, PERSONAL: 0},
                 {PERSON_NUM: 4, COMMONALITY: 20, PERSONAL: 0},
                 {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
             ]
         }, {
-            SEQUENCE_NUM: 5,
+            SEQUENCE_NUM: 16,
             TEST_DATA: [
-                {PERSON_NUM: 1, COMMONALITY: 18, PERSONAL: 0},
-                {PERSON_NUM: 2, COMMONALITY: 18, PERSONAL: 0},
-                {PERSON_NUM: 3, COMMONALITY: 18, PERSONAL: 0},
-                {PERSON_NUM: 4, COMMONALITY: 19, PERSONAL: 0},
-                {PERSON_NUM: 5, COMMONALITY: 19, PERSONAL: 0},
-            ]
-        }, {
-            SEQUENCE_NUM: 10,
-            TEST_DATA: [
-                {PERSON_NUM: 1, COMMONALITY: 18, PERSONAL: 0},
-                {PERSON_NUM: 2, COMMONALITY: 18, PERSONAL: 0},
-                {PERSON_NUM: 3, COMMONALITY: 18, PERSONAL: 0},
-                {PERSON_NUM: 4, COMMONALITY: 18, PERSONAL: 0},
-                {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
-            ]
-        }, {
-            SEQUENCE_NUM: 7,
-            TEST_DATA: [
-                {PERSON_NUM: 1, COMMONALITY: 17, PERSONAL: 0},
-                {PERSON_NUM: 2, COMMONALITY: 17, PERSONAL: 0},
-                {PERSON_NUM: 3, COMMONALITY: 18, PERSONAL: 0},
+                {PERSON_NUM: 1, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 2, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 3, COMMONALITY: 27, PERSONAL: 0},
                 {PERSON_NUM: 4, COMMONALITY: 20, PERSONAL: 0},
                 {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
             ]
         }, {
-            SEQUENCE_NUM: 12,
+            SEQUENCE_NUM: 3,
             TEST_DATA: [
-                {PERSON_NUM: 1, COMMONALITY: 16, PERSONAL: 0},
-                {PERSON_NUM: 2, COMMONALITY: 16, PERSONAL: 0},
+                {PERSON_NUM: 1, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 2, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 3, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 4, COMMONALITY: 30, PERSONAL: 0},
+                {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
+            ]
+        }, {
+            SEQUENCE_NUM: 9,
+            TEST_DATA: [
+                {PERSON_NUM: 1, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 2, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 3, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 4, COMMONALITY: 33, PERSONAL: 0},
+                {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
+            ]
+        }, {
+            SEQUENCE_NUM: 5,
+            TEST_DATA: [
+                {PERSON_NUM: 1, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 2, COMMONALITY: 18, PERSONAL: 0},
                 {PERSON_NUM: 3, COMMONALITY: 20, PERSONAL: 0},
                 {PERSON_NUM: 4, COMMONALITY: 20, PERSONAL: 0},
                 {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
             ]
         }, {
-            SEQUENCE_NUM: 4,
+            SEQUENCE_NUM: 10,
             TEST_DATA: [
-                {PERSON_NUM: 1, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 1, COMMONALITY: 15, PERSONAL: 0},
                 {PERSON_NUM: 2, COMMONALITY: 20, PERSONAL: 0},
                 {PERSON_NUM: 3, COMMONALITY: 20, PERSONAL: 0},
                 {PERSON_NUM: 4, COMMONALITY: 20, PERSONAL: 0},
                 {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
             ]
         }, {
+            SEQUENCE_NUM: 7,
+            TEST_DATA: [
+                {PERSON_NUM: 1, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 2, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 3, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 4, COMMONALITY: 12, PERSONAL: 0},
+                {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
+            ]
+        }, {
+            SEQUENCE_NUM: 12,
+            TEST_DATA: [
+                {PERSON_NUM: 1, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 2, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 3, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 4, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 5, COMMONALITY: 9, PERSONAL: 0},
+            ]
+        }, {
+            SEQUENCE_NUM: 4,
+            TEST_DATA: [
+                {PERSON_NUM: 1, COMMONALITY: 25, PERSONAL: 0},
+                {PERSON_NUM: 2, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 3, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 4, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 5, COMMONALITY: 22, PERSONAL: 0},
+            ]
+        }, {
             SEQUENCE_NUM: 6,
             TEST_DATA: [
                 {PERSON_NUM: 1, COMMONALITY: 24, PERSONAL: 0},
-                {PERSON_NUM: 2, COMMONALITY: 24, PERSONAL: 0},
-                {PERSON_NUM: 3, COMMONALITY: 16, PERSONAL: 0},
+                {PERSON_NUM: 2, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 3, COMMONALITY: 20, PERSONAL: 0},
                 {PERSON_NUM: 4, COMMONALITY: 16, PERSONAL: 0},
                 {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
             ]
         }, {
             SEQUENCE_NUM: 11,
             TEST_DATA: [
-                {PERSON_NUM: 1, COMMONALITY: 24, PERSONAL: 0},
+                {PERSON_NUM: 1, COMMONALITY: 0, PERSONAL: 35},
                 {PERSON_NUM: 2, COMMONALITY: 0, PERSONAL: 35},
                 {PERSON_NUM: 3, COMMONALITY: 0, PERSONAL: 35},
                 {PERSON_NUM: 4, COMMONALITY: 20, PERSONAL: 0},
@@ -119,7 +119,7 @@ export const VIRTUAL_DATA = {
                 {PERSON_NUM: 2, COMMONALITY: 0, PERSONAL: 35},
                 {PERSON_NUM: 3, COMMONALITY: 0, PERSONAL: 35},
                 {PERSON_NUM: 4, COMMONALITY: 20, PERSONAL: 0},
-                {PERSON_NUM: 5, COMMONALITY: 20, PERSONAL: 0},
+                {PERSON_NUM: 5, COMMONALITY: 27, PERSONAL: 0},
             ]
         }, {
             SEQUENCE_NUM: 13,
@@ -145,7 +145,7 @@ export const VIRTUAL_DATA = {
                 {PERSON_NUM: 1, COMMONALITY: 0, PERSONAL: 35},
                 {PERSON_NUM: 2, COMMONALITY: 0, PERSONAL: 35},
                 {PERSON_NUM: 3, COMMONALITY: 20, PERSONAL: 0},
-                {PERSON_NUM: 4, COMMONALITY: 22, PERSONAL: 0},
+                {PERSON_NUM: 4, COMMONALITY: 28, PERSONAL: 0},
                 {PERSON_NUM: 5, COMMONALITY: 21, PERSONAL: 0},
             ]
         }, {
