@@ -3,6 +3,8 @@
  * @type {{ROUTER_TREICHER: {"1": string, "2": string}, ROUTER_INDEX: {"1": string, "2": string, "3": string, "4": string}}}
  */
 import {VIRTUAL_DATA} from "./virtualDataConstants.js"
+import {QUESTIONS} from "./questionConstants.js";
+
 const ROUTER = {
     /**
      * 主页路由
@@ -64,7 +66,7 @@ const MAX_TEST_NUM = 16;
 export default class Constants {
     /**
      * 获取路由规则表
-     * @returns {{ROUTER_TREICHER: {"1": string, "2": string}, ROUTER_INDEX: {"1": string, "2": string, "3": string, "4": string}}}
+     * @returns {{ROUTER_TREICHER: {"1": string, "2": string}, ROUTER_INDEX: {"1": string, "2": string, "3": string, "4": string, "5": string}}}
      * @constructor
      */
     static get ROUTER() {
@@ -96,5 +98,14 @@ export default class Constants {
      */
     static get MAX_TEST_NUM() {
         return MAX_TEST_NUM;
+    }
+
+    /**
+     * 获取问题类型常量
+     * @returns {{QUESTIONS_AND_ANSWERS: {q1: {answer: string, options: string, type: string, questionDescribe: string}, q2: {answer: string, options: string, type: string, questionDescribe: string}, q3: {answer: string, options: string, type: string, questionDescribe: string}, q4: {answer: string, options: string, type: string, questionDescribe: string}, q5: {answer: string, options: string, type: string, questionDescribe: string}, q6: {answer: string, options: string, type: string, questionDescribe: string}, q7: {answer: {answer2: string, answer1: string}, options: string, type: string, questionDescribe: string}}, QUESTION_TYPE: {SINGLE_CHOICE_QUESTION: string, TRUE_OR_FALSE_QUESTIONS: string, FILL_IN_THE_BLANK_QUESTIONS: string, MULTIPLE_CHOICE_QUESTION: string}}}
+     * @constructor
+     */
+    static get QUESTIONS() {
+        return QUESTIONS;
     }
 }

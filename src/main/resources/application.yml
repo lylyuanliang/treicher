@@ -16,11 +16,5 @@ com:
       # 文件名
       virtual-data-name: "虚拟被试数据.xlsx"
     no-login:
+      # 这里需要优化一下
       uri: "/login,/doLogin,/doLogon,/,/webjars/*,/css/*,/images/*,/js/*,/index,/clear,/virtual,/getVirtualData"
-
-spring:
-  thymeleaf:
-    cache: false
-  mvc:
-    favicon:
-      enabled: false

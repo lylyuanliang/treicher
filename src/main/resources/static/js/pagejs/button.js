@@ -90,7 +90,7 @@ export default class Button {
      * @param targetPage
      */
     gotoPage(currentPage, targetPage) {
-        if(arguments.length > 1) {
+        if(arguments.length > 1 && targetPage) {
             $(`[name=${currentPage}]`).hide();
             $(`[name=${targetPage}]`).show();
         }else {

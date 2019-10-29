@@ -148,3 +148,13 @@ thead th {
 .border-top-strong {
     border-top: 2px solid #2196f3;
 }
+.underline {
+    width: 50px;
+    border-bottom: 1px solid #2196F3;
+}
+.underline input {
+    width: 50px;
+    background: none;
+    border: 0;
+    text-align: center;
+}

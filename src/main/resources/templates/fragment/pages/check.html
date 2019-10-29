@@ -12,7 +12,7 @@
                                 <p>
                                     1、我在这个分配任务中最终能得到多少钱完全取决于自己的行为
                                 </p>
-                                <div class="layui-input-block">
+                                <div class="layui-input-block" zm-verify="validInputRadio">
                                     <input type="radio" name="q1" value="T" title="正确">
                                     <input type="radio" name="q1" value="F" title="错误">
                                 </div>
@@ -23,7 +23,7 @@
                                 <p>
                                     2、我在这个分配任务中最终能得到多少钱完全取决于其他团队成员的行为
                                 </p>
-                                <div class="layui-input-block">
+                                <div class="layui-input-block" zm-verify="validInputRadio">
                                     <input type="radio" name="q2" value="T" title="正确">
                                     <input type="radio" name="q2" value="F" title="错误">
                                 </div>
@@ -34,7 +34,7 @@
                                 <p>
                                     3、个人目标和公共目标我都需要达到，否则我将失去所有钱
                                 </p>
-                                <div class="layui-input-block">
+                                <div class="layui-input-block" zm-verify="validInputRadio">
                                     <input type="radio" name="q3" value="T" title="正确">
                                     <input type="radio" name="q3" value="F" title="错误">
                                 </div>
@@ -45,7 +45,7 @@
                                 <p>
                                     4、个人目标为35个任务币，公共目标为120个任务币。某团队成员向个人池投入35个，向公共池投入0个。团队6人共向公共池投入100个。该团队成员在该轮次中最终能得到
                                 </p>
-                                <div class="layui-input-block">
+                                <div class="layui-input-block" zm-verify="validInputRadio">
                                     <input type="radio" name="q4" value="A" title="A    0元">
                                     <input type="radio" name="q4" value="B" title="B    1.5元">
                                     <input type="radio" name="q4" value="C" title="C    2元">
@@ -58,11 +58,33 @@
                                 <p>
                                     5、个人目标为35个任务币，公共目标为120个任务币。某团队成员向个人池投入5个，向公共池投入30个。团队6人共向公共池投入115个。该团队成员在该轮次中最终能得到
                                 </p>
-                                <div class="layui-input-block">
+                                <div class="layui-input-block" zm-verify="validInputRadio">
                                     <input type="radio" name="q5" value="A" title="A    0元">
                                     <input type="radio" name="q5" value="B" title="B    1.5元">
                                     <input type="radio" name="q5" value="C" title="C    2元">
                                     <input type="radio" name="q5" value="D" title="D    2.5元">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+                                    6、该实验共进行<span class="underline"></span>试次，每试次包括<span class="underline"></span>轮分配任务。实验共进行<span class="underline"></span>轮。
+                                </p>
+                                <div class="layui-input-block" zm-verify="validInputRadio">
+                                    <input type="radio" name="q6" value="A" title="A&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;16">
+                                    <input type="radio" name="q6" value="B" title="B&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;32&nbsp;&nbsp;&nbsp;32">
+                                    <input type="radio" name="q6" value="C" title="C&nbsp;&nbsp;&nbsp;32&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;16">
+                                    <input type="radio" name="q6" value="D" title="D&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;32">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div name="q7">
+                                    7、小明同学的实验结果如表一所示，小明同学随机抽到的奖励轮次为第1试次第1轮，第7试次第1轮，第5试次第2轮，第11试次第2轮，那么小明同学最终能获得的实验奖励为
+                                    <span class="underline"><input name="answer1" zm-verify="validInput"/></span>元，实验报酬（基础实验报酬+实验奖励）共计
+                                    <span class="underline"><input name="answer2" zm-verify="validInput"/></span>元。
                                 </div>
                             </td>
                         </tr>

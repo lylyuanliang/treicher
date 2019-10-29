@@ -2,52 +2,115 @@
  * 准备
  */
 import Common from "../common/common.js";
+import Constants from "../common/constants.js";
+import Valid from "./valid.js";
 
 export default class Check {
     /**
      * 构造函数
      */
     constructor() {
-
     }
 
     init(valid) {
         this.bindClick4Button();
-        valid['checkValid'] = this.valid;
+        //表单验证，
+        this.validObj = new Valid(this.validInput());
     }
 
+
+    /**
+     * 表单验证
+     */
+    validInput() {
+        return {
+            /**
+             * 单选框校验
+             * @param item
+             * @returns {boolean}
+             */
+            validInputRadio: (item) => {
+                let va = $(item).find("input[type='radio']:checked").val();
+                if (!va) {
+                    Common.showMessage("请先完成问题作答");
+                    return false;
+                }
+                return true;
+            },
+            /**
+             * 校验输入框
+             * @param item
+             * @returns {boolean}
+             */
+            validInput: (item) => {
+                let va = $(item).val();
+                if (!va) {
+                    Common.showMessage("请先完成问题作答");
+                    return false;
+                }
+                return true;
+            }
+        }
+    }
 
 
     /**
      * 校验
+     *      这个方法需要优化
      * @returns {boolean}
      */
-    valid() {
-        //问题及答案, 注，这里的q1,q2,q3,q4...与页面单选框的name一一对应
-        let questAndResult = {
-            "q1": "F",
-            "q2": "F",
-            "q3": "F",
-            "q4": "B",
-            "q5": "A"
-        }
-        let flag = true;
-        $.each(questAndResult, (qId, answer) => {
-            let qValue = $(`[name=${qId}]:checked`).val();
-            if(!qValue) {
-                Common.showMessage("请先完成问题作答！");
-                flag = false;
-                return false;
-            }
+    submit(_this) {
+        return (_this) => {
+            //问题及答案
+            let questAndResult = Constants.QUESTIONS.QUESTIONS_AND_ANSWERS;
+            let flag = true;
 
-            if(qValue != answer) {
-                //正确结果校验
-                Common.showMessage("答案不正确，实验规则理解不透彻，请联系主试");
-                flag = false;
-                return false;
+            $.each(questAndResult, (qId, questionAndAnswer) => {
+                let questionType = questionAndAnswer.type;
+                let answer = questionAndAnswer.answer;
+                if (questionType == Constants.QUESTIONS.QUESTION_TYPE.FILL_IN_THE_BLANK_QUESTIONS) {
+                    //如果是填空题，则单独校验
+                    $.each(answer, (answerId, result) => {
+                        debugger;
+                        let qValue = $(`[name=${qId}] [name=${answerId}]`).val();
+                        if (!this.validAnswer(qValue, answer[answerId])) {
+                            flag = false;
+                            return false;
+                        }
+                    });
+                } else {
+                    let qValue = $(`[name=${qId}]:checked`).val();
+                    if (!this.validAnswer(qValue, answer)) {
+                        flag = false;
+                        return false;
+                    }
+                }
+                if (!flag) {
+                    return false;
+                }
+            });
+
+            if (flag) {
+                this.goLoginPage();
             }
-        });
-        return flag;
+        }
+    }
+
+    /**
+     * 答案校验
+     */
+    validAnswer(qValue, answer) {
+        if(!qValue) {
+            Common.showMessage("请先完成问题作答！");
+            return false;
+        }
+
+        if(qValue != answer) {
+            //正确结果校验
+            Common.showMessage("答案不正确，实验规则理解不透彻，请联系主试");
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -56,9 +119,7 @@ export default class Check {
     bindClick4Button() {
         let _this = this;
         $("[name=check-submit]").on("click", function () {
-            if(_this.valid()) {
-                _this.goLoginPage();
-            }
+            _this.validObj.submit(_this.submit(_this), "check");
         });
     }
 

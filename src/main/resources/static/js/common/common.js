@@ -23,6 +23,7 @@ export default class Common {
 
     /**
      * 弹出层方法重载
+     *      注：这个方法目前依赖layer，后续需要改造
      * @param message
      */
     static showMessage(message) {
