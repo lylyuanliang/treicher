@@ -24,11 +24,7 @@
         <button class="layui-btn admin-button" type="button" id="next-testing">下一试次</button>
     </div>
 
-    <div class="tips">
-        <button class="layui-btn">
-            当前<span class="layui-badge layui-bg-gray" th:name="person_online">1</span>在线
-        </button>
-    </div>
+    <div th:replace="fragment/pages/tips::page_tips"></div>
 
     <!--按钮-->
     <div th:replace="fragment/pages/button::page_button"></div>

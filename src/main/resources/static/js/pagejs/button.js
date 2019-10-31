@@ -109,9 +109,11 @@ export default class Button {
         if(Router.getFirstPage(this.name) == currentPageNum) {
             //第一页，隐藏“上一页”按钮
             $(this.buttonLeftClass).css("visibility", "hidden");
+            $(this.buttonLeftClass).css("transition", "0s");
         }else if(Router.getLastPage(this.name) == currentPageNum) {
             //最后一页，隐藏“下一页”按钮
             $(this.buttonRightClass).css("visibility", "hidden");
+            $(this.buttonLeftClass).css("transition", "0s");
         }
     }
 }

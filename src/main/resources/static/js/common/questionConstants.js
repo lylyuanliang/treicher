@@ -3,23 +3,23 @@
  * @type {{SINGLE_CHOICE_QUESTION: string, TRUE_OR_FALSE_QUESTIONS: string, FILL_IN_THE_BLANK_QUESTIONS: string, MULTIPLE_CHOICE_QUESTION: string}}
  */
 const QUESTION_TYPE = {
-        /**
-         * 判断题
-         */
-            TRUE_OR_FALSE_QUESTIONS: "trueOrFalseQuestions",
-        /**
-         * 选择题（单选）
-         */
-            SINGLE_CHOICE_QUESTION: "singleChoiceQuestion",
-        /**
-         * 选择题(多选)
-         */
-            MULTIPLE_CHOICE_QUESTION: "multipleChoiceQuestion",
-        /**
-         * 填空题
-         */
-            FILL_IN_THE_BLANK_QUESTIONS: "fillInTheBlankQuestions"
-    };
+    /**
+     * 判断题
+     */
+    TRUE_OR_FALSE_QUESTIONS: "trueOrFalseQuestions",
+    /**
+     * 选择题（单选）
+     */
+    SINGLE_CHOICE_QUESTION: "singleChoiceQuestion",
+    /**
+     * 选择题(多选)
+     */
+    MULTIPLE_CHOICE_QUESTION: "multipleChoiceQuestion",
+    /**
+     * 填空题
+     */
+    FILL_IN_THE_BLANK_QUESTIONS: "fillInTheBlankQuestions"
+};
 /**
  * 问题及答案
  *      这里有个优化没有用到，作为以后优化 “实验规则校验页面” 备用

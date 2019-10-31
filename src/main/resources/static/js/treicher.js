@@ -1,6 +1,7 @@
 /**
  * js执行入口
  */
+import Tips from "./pagejs/tips.js";
 
 layui.use(["element", "form"], function () {
     let treicher = new Treicher();
@@ -26,22 +27,22 @@ class Treicher {
     init() {
         let button = new Button();
         let ready = new Ready();
-        let testing = new Testing();
+
+        let tips = new Tips();
+        let testing = new Testing(tips);
 
         button.init(this.valid);
-        this.onlineNumChange();
+
         ready.init(this.valid);
+
+        tips.init();
         testing.init();
+
         this.bindEvent();
 
     }
 
-    onlineNumChange() {
-        setInterval(function () {
-            let changedNum = Common.getRndInteger(1, 31);
-            $("[name=person_online]").html(250 + changedNum);
-        }, 2000);
-    }
+
 
     /**
      * 事件绑定

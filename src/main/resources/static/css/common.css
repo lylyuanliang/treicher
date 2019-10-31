@@ -42,6 +42,7 @@ tbody td:hover {
 
 .tips {
     position: absolute;
+    display: flex;
     right: 0;
     top: 0;
 }
@@ -92,4 +93,16 @@ tbody td:hover {
 td {
     color: #000000!important;
     font-weight: bold;
+}
+
+.underline {
+    width: 50px;
+    border-bottom: 1px solid #2196F3;
+    display: inline-block;
+}
+.underline input {
+    width: 50px;
+    background: none;
+    border: 0;
+    text-align: center;
 }

@@ -9,7 +9,7 @@ export default class Testing {
     /**
      * 构造函数
      */
-    constructor() {
+    constructor(tips) {
         //任务开始之前，获得50个任务币
         this.total = 50;
         this.submitUrl = Common.getContextPath() + "/submit";
@@ -21,37 +21,19 @@ export default class Testing {
         this.waiting = new Waiting();
         //userNum去看treicher.html页面底部
         this.userNum = 0;
+
+        this.tips = tips;
     }
 
     init(valid) {
         this.bindClick4Button();
         this.bindEvent4Input();
         $("#other").val(this.total);
-        this.getTestingInfo();
         this.waiting.init();
-    }
 
-    /**
-     * 获取实验信息
-     */
-    getTestingInfo() {
-        let _this = this;
-        //获取实验信息
-        Common.getTestingInfo(function (data) {
-            let rtnCode = data["returnCode"];
-            if(Constants.RTN_CODE.SUCCESS == rtnCode) {
-                let res = data["data"];
-                let testNum = res["testNum"];
-                let roundNum = res["roundNum"];
-                let userNum = res["userNum"];
-                $("[name=testNum]").text(testNum);
-                $("[name=roundNum]").text(roundNum);
-
-                _this.testNum = testNum;
-                _this.roundNum = roundNum;
-                _this.userNum = userNum;
-            }
-        });
+        this.testNum = this.tips.testNum;
+        this.roundNum = this.tips.roundNum;
+        this.userNum = this.tips.userNum;
     }
 
     /**
