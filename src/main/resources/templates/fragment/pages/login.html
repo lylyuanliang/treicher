@@ -6,9 +6,10 @@
         <form class="layui-form" action="">
             <div>
                 <i class="layui-icon layui-icon-username admin-icon admin-icon-username"></i>
+                <!--增加readonly，防止浏览器自动填充账户密码-->
                 <input type="text" name="username" placeholder="请输入用户名"
                        autocomplete="off"
-                       class="layui-input admin-input admin-input-username" th:title="建议输入中文">
+                       class="layui-input admin-input admin-input-username" th:title="建议输入中文" readonly>
             </div>
             <div>
                 <i class="layui-icon layui-icon-password admin-icon admin-icon-password"></i>

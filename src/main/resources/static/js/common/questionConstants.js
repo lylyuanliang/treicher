@@ -28,9 +28,25 @@ const QUESTION_TYPE = {
  */
 const QUESTIONS_AND_ANSWERS = {
     "q1": {
+        /**
+         * 问题描述
+         */
         questionDescribe: "",
+        /**
+         * 选项
+         */
         options: "",
+        /**
+         * 包含的页面片段
+         */
+        includeFragment: "",
+        /**
+         * 问题类型
+         */
         type: QUESTION_TYPE.TRUE_OR_FALSE_QUESTIONS,
+        /**
+         * 答案
+         */
         answer: "F"
     },
     "q2": {

@@ -1,3 +1,7 @@
+* {
+    transition: all 0s!important;
+    -webkit-transition: all 0s!important;
+}
 body {
     width: calc(90vw);
     height: calc(90vh);

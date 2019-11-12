@@ -215,8 +215,12 @@ public class TestingController extends BaseController {
             List<TestingVo> list = JSONArray.parseArray(exportData, TestingVo.class);
             HttpSession session = getSession();
             String userName =(String)session.getAttribute(OtherConstants.LOGIN.SESSION_KEY_USER_NAME);
+
+            //获取用户号
+            String userNum = getUserNum();
+
             long l = System.currentTimeMillis();
-            String fileName = userName + "-" + l + ".xlsx";
+            String fileName = userNum + "-" + userName + "-" + l + ".xlsx";
             boolean b = ExcelUtil.exportData(list, OtherConstants.Excel.CELL_HEADS_TESTING, OtherConstants.Excel.path, fileName);
             if(b) {
                 return ResponseUtil.success("导出成功");

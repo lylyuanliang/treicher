@@ -25,6 +25,11 @@ public class BaseController {
         return session;
     }
 
+    /**
+     * 获取用户编号
+     * @return
+     * @throws FileNotFoundException
+     */
     protected String getUserNum() throws FileNotFoundException {
         HttpSession session = getSession();
         String userName =(String)session.getAttribute(OtherConstants.LOGIN.SESSION_KEY_USER_NAME);

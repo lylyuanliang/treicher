@@ -33,6 +33,10 @@ class Login {
      * 给按钮绑定点击事件
      */
     bindClick4Button() {
+        $("[name=login] [name=username]").on("focus", function () {
+            //删除readonly，
+            $(this).removeAttr("readonly");
+        });
         //登录
         $("body").on("click", "#login", () => {
             this.login();
