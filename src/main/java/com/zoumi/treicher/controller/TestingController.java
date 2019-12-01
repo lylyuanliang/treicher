@@ -232,6 +232,10 @@ public class TestingController extends BaseController {
         }
     }
 
+    /**
+     * 获取序号
+     * @return
+     */
     @GetMapping("/getIndex")
     public String getIndex() {
 
@@ -252,6 +256,10 @@ public class TestingController extends BaseController {
         return ResponseUtil.success(i);
     }
 
+    /**
+     * 获取虚拟被试数据
+     * @return
+     */
     @GetMapping("/getVirtualData")
     public String getVirtualData() {
         String useLocal = "Y";

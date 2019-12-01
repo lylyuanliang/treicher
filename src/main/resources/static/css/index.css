@@ -162,3 +162,8 @@ thead th {
 [name="example_table1"] td {
     text-align: center;
 }
+
+.virtual-tips {
+    width: 33%;
+    height: 4%;
+}
