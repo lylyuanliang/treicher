@@ -17,11 +17,54 @@ class Virtual {
         this.virtualRes = virtualRes;
     }
 
+    bindEvent() {
+        $("#sure").on("click", () => {
+            this.showResult();
+        });
+        $("#close").on("click", () => {
+            $("#result").hide();
+        });
+    }
+
+    /**
+     * 创建表格
+     * @param personal 个人池投入
+     * @param commonality 公共池投入
+     * @param other 剩余
+     * @param testNum 试次
+     */
+    showResult() {
+        let testNum = $("#testNum").val();
+        let personNum = $("#personNum").val();
+
+        if(!testNum || !personNum) {
+            return ;
+        }
+        personNum = parseInt(personNum) % 4;
+        //数据编号，从1到5
+        let pNum = 1;
+        let tBody = $("#result tbody");
+        tBody.html("");
+        for (let i = 0; i < 5; i++) {
+            let virtualDataDetail = VirtualDataUtil.getVirtualDataDetailAnother(personNum, testNum, pNum++);
+            let commonalityVirtual = virtualDataDetail.COMMONALITY;
+            let personalVirtual = virtualDataDetail.PERSONAL;
+            tBody.append($(`<tr>
+                                <td class="text-center">${i+1}</td>
+                                <td class="text-center">${commonalityVirtual}</td>
+                                <td class="text-center">${personalVirtual}</td>
+                            </tr>`));
+        }
+        $("#result").show();
+    }
+
+
     /**
      * 初始化
      */
     init() {
         this.buildTable(this.virtualRes);
+        this.bindEvent();
     }
 
     /**

@@ -62,10 +62,10 @@ public class BaseController {
             Integer max = Integer.parseInt(maxUserNum);
             //增一
             max ++;
-            max = max % 16;
+            max = max % 4;
 
             if(max == 0) {
-                max = 16;
+                max = 4;
             }
 
             String maxStr = String.valueOf(max);

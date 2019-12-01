@@ -489,6 +489,47 @@ export const VIRTUAL_DATA = {
         }
     ],
     /**
+     * 实验顺序(另一个顺序)
+     * 注：参数说明
+     *      TEST_NUM：试次
+     *      SEQUENCE_NUM：自变量水平（对应VIRTUAL_DATA常量里面的SEQUENCE_NUM）
+     */
+    PART: [
+        {
+            USER_NUM: 1,
+            PART_DETAIL: [
+                {PART_NUM: 1, SEQUENCE_NUM: 1},
+                {PART_NUM: 2, SEQUENCE_NUM: 2},
+                {PART_NUM: 3, SEQUENCE_NUM: 4},
+                {PART_NUM: 4, SEQUENCE_NUM: 3},
+            ]
+        },{
+            USER_NUM: 2,
+            PART_DETAIL: [
+                {PART_NUM: 1, SEQUENCE_NUM: 2},
+                {PART_NUM: 2, SEQUENCE_NUM: 3},
+                {PART_NUM: 3, SEQUENCE_NUM: 1},
+                {PART_NUM: 4, SEQUENCE_NUM: 4},
+            ]
+        },{
+            USER_NUM: 3,
+            PART_DETAIL: [
+                {PART_NUM: 1, SEQUENCE_NUM: 3},
+                {PART_NUM: 2, SEQUENCE_NUM: 4},
+                {PART_NUM: 3, SEQUENCE_NUM: 2},
+                {PART_NUM: 4, SEQUENCE_NUM: 1},
+            ]
+        },{
+            USER_NUM: 4,
+            PART_DETAIL: [
+                {PART_NUM: 1, SEQUENCE_NUM: 4},
+                {PART_NUM: 2, SEQUENCE_NUM: 1},
+                {PART_NUM: 3, SEQUENCE_NUM: 3},
+                {PART_NUM: 4, SEQUENCE_NUM: 2},
+            ]
+        }
+        ],
+    /**
      * 实验反馈第二轮公共池虚拟数据
      */
     FEEDBACK_VIRTUAL_DATA: [

@@ -74,4 +74,17 @@ export default class Common {
             success: callback
         });
     }
+
+    /**
+     * 随机打乱数组
+     * @param array
+     */
+    static randomArray(array) {
+        let i = array.length;
+        while (i) {
+            let j = Math.floor(Math.random() * i--);
+            [array[j], array[i]] = [array[i], array[j]];
+        }
+        return array;
+    }
 }

@@ -55,10 +55,16 @@ const RTN_CODE = {
 };
 
 /**
- * 最大试次 16次
+ * 最大试次 10次
  * @type {number}
  */
-const MAX_TEST_NUM = 16;
+const MAX_TEST_NUM = 10;
+
+/**
+ * 是否有空 index，对应虚拟被试数据excel里面 自变量水平是否有空值，默认false
+ * @type {boolean}
+ */
+const HAS_EMPTY_INDEX = false;
 
 /**
  * 定义常量类
@@ -107,5 +113,14 @@ export default class Constants {
      */
     static get QUESTIONS() {
         return QUESTIONS;
+    }
+
+    /**
+     * 获取 是否有空index
+     * @returns {boolean}
+     * @constructor
+     */
+    static get HAS_EMPTY_INDEX() {
+        return HAS_EMPTY_INDEX;
     }
 }

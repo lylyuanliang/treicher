@@ -15,16 +15,17 @@ const PERSONAL = "PERSONAL";
  */
 const COMMONALITY = "COMMONALITY";
 export default class VirtualDataUtil {
+
     /**
      * 获取实验顺序
      * @param userNum
      */
     static getSequenceDetail(userNum) {
         let sequenceDetail = [];
-        $.each(Constants.VIRTUAL_DATA.SEQUENCE, function (index, sequence) {
+        $.each(Constants.VIRTUAL_DATA.PART, function (index, sequence) {
             if(sequence.USER_NUM == userNum) {
                 //找到顺序
-                sequenceDetail = sequence.SEQUENCE_DETAIL;
+                sequenceDetail = sequence.PART_DETAIL;
                 return false;
             }
         });
@@ -32,7 +33,7 @@ export default class VirtualDataUtil {
     }
 
     /**
-     * 获取sequencenum
+     * 获取sequenceNum
      * @param testNum
      * @param userNum
      * @returns {string}
@@ -40,8 +41,9 @@ export default class VirtualDataUtil {
     static getSequenceNUm(testNum, userNum) {
         let sequenceNum = "";
         let sequenceDetail = this.getSequenceDetail(userNum);
+        let partNum = this.getPartNum(testNum);
         $.each(sequenceDetail, function (index, detail) {
-            if(detail.TEST_NUM == testNum) {
+            if(detail.PART_NUM == partNum) {
                 //找到
                 sequenceNum = detail.SEQUENCE_NUM;
                 return false;
@@ -51,11 +53,21 @@ export default class VirtualDataUtil {
     }
 
     /**
-     * 获取虚拟被试数据
+     * 获取partNum
+     * @param testNum
      */
-    static getVirtualDataList(sequenceNum) {
-        let virtualDataList = [];
+    static getPartNum(testNum) {
+        let list = this.getVirtualDataFromService();
+        return this.countNotNUll(list, testNum);
+    }
+
+    /**
+     * 从后台读取数据
+     * @returns {*[]|Array}
+     */
+    static getVirtualDataFromService() {
         let url = `${Common.getContextPath()}/getVirtualData`;
+        let virtualData = []
         Common.$ajax({
             url: url,
             type: "get",
@@ -66,25 +78,105 @@ export default class VirtualDataUtil {
                 if(Constants.RTN_CODE.SUCCESS == rtnCode) {
                     // Common.showMessage("成功");
                     let virData = data["data"];
-                    let virtualData = Constants.VIRTUAL_DATA.DATA;
+                    virtualData = Constants.VIRTUAL_DATA.DATA;
                     if(virData) {
                         //virData不为空，表示读取的excel文件
                         virtualData = JSON.parse(virData);
                     }
-                    $.each(virtualData, function (index, data) {
-                        if(sequenceNum == data.SEQUENCE_NUM) {
-                            //找到被试虚拟数据
-                            virtualDataList = data.TEST_DATA;
-                            return false;
-                        }
-                    });
+                    return virtualData
                 }else {
                     Common.showMessage(data["returnMessage"]);
+                    return [];
                 }
             }
         });
+        return virtualData;
+    }
 
+    /**
+     * 获取虚拟被试数据
+     */
+    static getVirtualDataList(sequenceNum, testNum) {
+        let _this = this;
+        let virtualData = this.getVirtualDataFromService();
+        let virtualDataList = _this.getValueInList(virtualData, sequenceNum);
+        //增加一个逻辑，如果sequenceNum在 virtualData中没有找到，则返回 sequenceNum = testNum 的数据
+        if(testNum) {
+            let seqIsNull = _this.isNullIndex(virtualData, testNum);
+            if(seqIsNull) {
+                //虚拟被试数据 自变量水平为空，则sequenceNum = testNum
+                virtualDataList = _this.getValueInListWithIndex(virtualData, testNum);
+            }
+        }
         return virtualDataList;
+    }
+
+    /**
+     * 找到被试虚拟数据
+     * @param list
+     * @param key
+     * @returns {Array}
+     */
+    static getValueInList(list, key) {
+        let virtualDataList = [];
+        $.each(list, function (index, data) {
+            if(key == data.SEQUENCE_NUM) {
+                //找到被试虚拟数据
+                virtualDataList = data.TEST_DATA;
+                return false;
+            }
+        });
+        return virtualDataList;
+    }
+    /**
+     * 找到被试虚拟数据
+     * @param list
+     * @param key
+     * @returns {Array}
+     */
+    static getValueInListWithIndex(list, index) {
+        let virtualDataList = [];
+        $.each(list, function (i, data) {
+            if(index == (i+1)) {
+                virtualDataList = data.TEST_DATA;
+                return false;
+            }
+        });
+        return virtualDataList;
+    }
+
+    /**
+     * 判断是否为空
+     * @param list
+     * @param index
+     * @returns {boolean}
+     */
+    static isNullIndex(list, index) {
+        let nullFlag = false;
+        $.each(list, function (i, data) {
+            if(index == (i+1) && !data.SEQUENCE_NUM) {
+                nullFlag = true;
+                return false;
+            }
+        });
+        return nullFlag;
+    }
+
+    /**
+     * 计算非空数量
+     * @param list
+     * @param index
+     */
+    static countNotNUll(list, index) {
+        let partNum = 0;
+        $.each(list, function (i, data) {
+            if(i <= index && data.SEQUENCE_NUM) {
+                partNum ++;
+            }
+        });
+        //将partNum的值赋值给 静态属性
+        VirtualDataUtil.partNum = partNum;
+        return partNum;
     }
 
     /**
@@ -92,15 +184,15 @@ export default class VirtualDataUtil {
      */
     static getVirtualDataListAnother(testNum, userNum) {
         let sequenceNum = this.getSequenceNUm(testNum, userNum);
-        let virtualDataList = this.getVirtualDataList(sequenceNum);
+        let virtualDataList = this.getVirtualDataList(sequenceNum, testNum);
         return virtualDataList;
     }
 
     /**
      * 获取虚拟数据详情
      */
-    static getVirtualDataDetail(sequenceNum, index) {
-        let virtualDataList = this.getVirtualDataList(sequenceNum);
+    static getVirtualDataDetail(sequenceNum, index, testNum) {
+        let virtualDataList = this.getVirtualDataList(sequenceNum, testNum);
         let data = {};
         $.each(virtualDataList, function (i, virtualData) {
             let personNum = virtualData.PERSON_NUM;
@@ -116,7 +208,7 @@ export default class VirtualDataUtil {
      */
     static getVirtualDataDetailAnother(userNum, testNum, index) {
         let sequenceNum = this.getSequenceNUm(testNum, userNum);
-        let virtualDataDetail = this.getVirtualDataDetail(sequenceNum, index);
+        let virtualDataDetail = this.getVirtualDataDetail(sequenceNum, index, testNum);
         return virtualDataDetail;
     }
 
@@ -141,10 +233,10 @@ export default class VirtualDataUtil {
      * @param testNum
      * @returns {number}
      */
-    static getPersonalTotal(userNum, testNum) {
-        let total = this.getTotal(PERSONAL, userNum, testNum);
-        return total;
-    }
+    // static getPersonalTotal(userNum, testNum) {
+    //     let total = this.getTotal(PERSONAL, userNum, testNum);
+    //     return total;
+    // }
 
     /**
      * 获取公共池总数
@@ -173,3 +265,9 @@ export default class VirtualDataUtil {
     }
 
 }
+
+/**
+ * 定义静态属性
+ * @type {number}
+ */
+VirtualDataUtil.partNum = 1;

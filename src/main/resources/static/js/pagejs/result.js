@@ -1,5 +1,5 @@
 /**
- * 准备
+ * 结果
  */
 import VirtualDataUtil from "../common/virtualDataUtil.js";
 import Common from "../common/common.js";
@@ -74,8 +74,6 @@ export default class Result {
         });
     }
 
-
-
     /**
      * 创建表格
      * @param personal 个人池投入
@@ -95,7 +93,8 @@ export default class Result {
                         </tr>`));
         //数据编号，从1到5
         let pNum = 1;
-        $.each(this.userList, (index, userInfo) => {
+        let userList = this.getUserList4Random(this.userList);
+        $.each(userList, (index, userInfo) => {
             //获取虚拟数据
             let userName = userInfo.userName;
             let tr = $("<tr></tr>");
@@ -111,7 +110,7 @@ export default class Result {
                 commonalityTotal += parseInt(commonalityVirtual);
                 td = $(`<td><span>${userName}</span>向公共池投入<input value="${commonalityVirtual}">个，向个人池投入<input value="${personalVirtual}">个</td>`);
             } else {
-                td = $(`<td><span>你</span>向公共池投入<input value="${commonality}">个，向个人池投入<input value="${personal}">个</td>`);
+                td = $(`<td><span>【你】</span>向公共池投入<input value="${commonality}">个，向个人池投入<input value="${personal}">个</td>`);
             }
             tr.append(td);
             $("#result-detail").append(tr);
@@ -126,5 +125,13 @@ export default class Result {
                                     <button type="button" id="next-round" class="layui-btn layui-btn-radius layui-btn-sm">下一轮</button>
                                 </td>
                             </tr>`));
+    }
+
+    /**
+     * 将userList数组碎甲打乱
+     * @param userList
+     */
+    getUserList4Random(userList) {
+        return Common.randomArray(userList);
     }
 }
