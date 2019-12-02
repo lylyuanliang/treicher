@@ -132,6 +132,17 @@ export default class Result {
      * @param userList
      */
     getUserList4Random(userList) {
-        return Common.randomArray(userList);
+        let list = Common.randomArray(userList);
+        let loginUserIndex = 0;
+        let length = list.length;
+        $.each(list, (i, o) => {
+            if(this.currentUser == o["userName"]) {
+                loginUserIndex = i;
+                return false;
+            }
+        });
+        //将当前登录用户交换到数组末尾
+        [list[loginUserIndex], list[length-1]] = [list[length-1], list[loginUserIndex]];
+        return list;
     }
 }
