@@ -2,6 +2,8 @@ package com.zoumi.treicher.controller;
 
 import com.zoumi.treicher.common.OtherConstants;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -9,11 +11,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.*;
-import java.net.URL;
 
 public class BaseController {
 
-    private static final String paramPath = "D:/zoumi/params/maxUserNum";
+    private static final String PARAM_PATH = "D:/zoumi/params/maxUserNum";
+    private static final Logger LOG = LoggerFactory.getLogger(BaseController.class);
+
     /**
      * 获取session
      * @return
@@ -48,7 +51,7 @@ public class BaseController {
      * @return
      */
     private String getMaxUserNum() throws FileNotFoundException {
-        File file = ResourceUtils.getFile(paramPath);
+        File file = ResourceUtils.getFile(PARAM_PATH);
         BufferedReader reader = null;
         StringBuffer sbf = new StringBuffer();
         try {
@@ -70,16 +73,17 @@ public class BaseController {
 
             String maxStr = String.valueOf(max);
             //保存最大值
-            WriteMaxUserNum(maxStr, paramPath);
+            WriteMaxUserNum(maxStr, PARAM_PATH);
             return maxStr;
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("获取最大用户号异常", e);
         } finally {
             if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e1) {
                     e1.printStackTrace();
+                    LOG.error("反正就是异常了", e1);
                 }
             }
         }
@@ -104,7 +108,7 @@ public class BaseController {
             bw.flush();// 把缓存区内容压入文件
             bw.close();//关闭文件
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("反正就是异常了", e);
         }finally {
             if(fileWriter != null) {
                 fileWriter.close();
