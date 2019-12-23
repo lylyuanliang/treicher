@@ -55,7 +55,7 @@ export default class Ready {
                 $(readyDiv).removeClass("hide");
                 $(readyDiv).parent().find("[name=readying-text-part-others]").hide();
             }
-        }, 30 + Math.random()*1000)
+        }, 30 + Math.random()*100)
     }
 
     /**

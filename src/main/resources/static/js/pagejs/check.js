@@ -30,11 +30,11 @@ export default class Check {
              * @returns {boolean}
              */
             validInputRadio: (item) => {
-                let va = $(item).find("input[type='radio']:checked").val();
-                if (!va) {
-                    Common.showMessage("请先完成问题作答");
-                    return false;
-                }
+                // let va = $(item).find("input[type='radio']:checked").val();
+                // if (!va) {
+                //     Common.showMessage("请先完成问题作答");
+                //     return false;
+                // }
                 return true;
             },
             /**
@@ -43,11 +43,11 @@ export default class Check {
              * @returns {boolean}
              */
             validInput: (item) => {
-                let va = $(item).val();
-                if (!va) {
-                    Common.showMessage("请先完成问题作答");
-                    return false;
-                }
+                // let va = $(item).val();
+                // if (!va) {
+                //     Common.showMessage("请先完成问题作答");
+                //     return false;
+                // }
                 return true;
             }
         }
@@ -102,16 +102,16 @@ export default class Check {
      * 答案校验
      */
     validAnswer(qValue, answer) {
-        if(!qValue) {
-            Common.showMessage("请先完成问题作答！");
-            return false;
-        }
-
-        if(qValue != answer) {
-            //正确结果校验
-            Common.showMessage("答案不正确，实验规则理解不透彻，请联系主试");
-            return false;
-        }
+        // if(!qValue) {
+        //     Common.showMessage("请先完成问题作答！");
+        //     return false;
+        // }
+        //
+        // if(qValue != answer) {
+        //     //正确结果校验
+        //     Common.showMessage("答案不正确，实验规则理解不透彻，请联系主试");
+        //     return false;
+        // }
         return true;
     }
 
