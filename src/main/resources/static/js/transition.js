@@ -58,7 +58,7 @@ class Transition {
         let _this = this;
         //模拟loading
         let n = 0, timer = setInterval(function(){
-            n = n + Math.random()*10|0;
+            n = n + Math.random()*200|0;
             if(n>100){
                 n = 100;
                 clearInterval(timer);
@@ -66,7 +66,7 @@ class Transition {
                 _this.gotoTreicherPage();
             }
             _this.element.progress('pgr', n+'%');
-        }, 30 + Math.random()*100);
+        }, 500);
     }
 
     /**

@@ -10,7 +10,7 @@ export default class Waiting {
      * 构造函数
      */
     constructor() {
-        this.timeOut = 15 * 1000;
+        this.timeOut = 500;
         this.result = new Result();
         this.getIndexUrl = Common.getContextPath() + "/getIndex";
     }
@@ -24,7 +24,7 @@ export default class Waiting {
      *  延时执行
      */
     toResult(personal, commonality, other, testNum) {
-        let timeOut = this.timeOut + Common.getRndInteger(1, 15);
+        let timeOut = this.timeOut + Common.getRndInteger(1, 2);
         // let timeOut = 1;
         let _this = this;
         Common.$ajax({
