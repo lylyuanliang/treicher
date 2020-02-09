@@ -1,7 +1,10 @@
 package com.zoumi.treicher.bean;
 
 import com.zoumi.treicher.common.ExcelUtil;
+import com.zoumi.treicher.common.FileConfigUtils;
+import com.zoumi.treicher.common.FilePathUtils;
 import com.zoumi.treicher.property.ExcelProperty;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +29,12 @@ public class VirtualDataBean implements CommandLineRunner {
      */
     private String virtualDataLocal;
 
+    private final ExcelProperty excelProperty;
+
     @Autowired
-    private ExcelProperty excelProperty;
+    public VirtualDataBean(ExcelProperty excelProperty) {
+        this.excelProperty = excelProperty;
+    }
 
     @Override
     public void run(String... args) throws Exception {
@@ -39,7 +46,20 @@ public class VirtualDataBean implements CommandLineRunner {
      */
     public void getVirtualDataBean() {
         try {
-            String virtualData = ExcelUtil.importData(excelProperty.getVirtualDataPath(), excelProperty.getVirtualDataName());
+            String jarPath = FilePathUtils.getJarPath();
+            //优先使用外部配置文件 /data/fileConfig.txt
+            FileConfigBean configFromOutSide = FileConfigUtils.getConfigFromOutSide();
+            String filePath = configFromOutSide.getFilePath();
+            String fileName = configFromOutSide.getFileName();
+            if(StringUtils.isEmpty(filePath)) {
+                filePath =  excelProperty.getVirtualDataPath();
+            }
+            if(StringUtils.isEmpty(fileName)) {
+                fileName = excelProperty.getVirtualDataName();
+            }
+            String excelFilePath = jarPath + filePath;
+            System.out.println("===" + excelFilePath);
+            String virtualData = ExcelUtil.importData(excelFilePath, fileName);
             this.virtualDataVos = virtualData;
             this.virtualDataLocal = excelProperty.getVirtualDataLocal();
         }catch (Exception e) {

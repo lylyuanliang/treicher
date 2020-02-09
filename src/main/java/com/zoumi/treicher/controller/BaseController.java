@@ -1,5 +1,7 @@
 package com.zoumi.treicher.controller;
 
+import com.zoumi.treicher.bean.FileConfigBean;
+import com.zoumi.treicher.common.FileConfigUtils;
 import com.zoumi.treicher.common.OtherConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -63,12 +65,16 @@ public class BaseController {
             reader.close();
             String maxUserNum = sbf.toString();
             Integer max = Integer.parseInt(maxUserNum);
+
+            FileConfigBean configFromOutSide = FileConfigUtils.getConfigFromOutSide();
+            Integer realTestNums = configFromOutSide.getRealTestNums();
+
             //增一
             max ++;
-            max = max % 4;
+            max = max % realTestNums;
 
             if(max == 0) {
-                max = 4;
+                max = realTestNums;
             }
 
             String maxStr = String.valueOf(max);

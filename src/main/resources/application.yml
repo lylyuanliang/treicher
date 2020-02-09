@@ -12,9 +12,9 @@ com:
       # 是否使用本地文件 Y表示使用，其他值表示不使用
       virtual-data-local: "Y"
       # 文件路径
-      virtual-data-path: "D:/fileSave/邹密/数据"
+      virtual-data-path: "/data/"
       # 文件名
-      virtual-data-name: "虚拟被试数据 (利己组).xlsx"
+      virtual-data-name: "虚拟被试数据.xlsx"
     no-login:
       # 这里需要优化一下
-      uri: "/login,/doLogin,/doLogon,/,/webjars/*,/css/*,/images/*,/js/*,/index,/clear,/virtual,/getVirtualData"
+      uri: "/login,/doLogin,/doLogon,/,/webjars/*,/css/*,/images/*,/js/*,/index,/clear,/virtual,/getVirtualData,/config,/upload"

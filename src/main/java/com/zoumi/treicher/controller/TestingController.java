@@ -2,21 +2,25 @@ package com.zoumi.treicher.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.zoumi.treicher.bean.FileConfigBean;
 import com.zoumi.treicher.bean.VirtualDataBean;
-import com.zoumi.treicher.common.ExcelUtil;
-import com.zoumi.treicher.common.OtherConstants;
-import com.zoumi.treicher.common.ResponseUtil;
+import com.zoumi.treicher.common.*;
 import com.zoumi.treicher.vo.TaskVo;
 import com.zoumi.treicher.vo.TestingVo;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -221,7 +225,8 @@ public class TestingController extends BaseController {
 
             long l = System.currentTimeMillis();
             String fileName = userNum + "-" + userName + "-" + l + ".xlsx";
-            boolean b = ExcelUtil.exportData(list, OtherConstants.Excel.CELL_HEADS_TESTING, OtherConstants.Excel.path, fileName);
+            String savePath = FilePathUtils.getJarPath() + OtherConstants.Excel.path;
+            boolean b = ExcelUtil.exportData(list, OtherConstants.Excel.CELL_HEADS_TESTING, savePath, fileName);
             if(b) {
                 return ResponseUtil.success("导出成功");
             }
@@ -275,6 +280,32 @@ public class TestingController extends BaseController {
         }catch (Exception e) {
             LOG.error("获取虚拟被试数据异常", e);
             return ResponseUtil.error("获取虚拟被试数据异常");
+        }
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile file) {
+        String flag = "\\?";
+        try {
+            String fileNames = file.getOriginalFilename();
+            String[] split = fileNames.split(flag);
+
+            String fileName = split[0];
+            FileConfigBean configFromOutSide = FileConfigUtils.getConfigFromOutSide();
+            String filePath = configFromOutSide.getFilePath();
+            String jarPath = FilePathUtils.getJarPath();
+            String savePath = jarPath + filePath + fileName;
+            File saveFile = new File(savePath);
+
+            FileUtils.forceMkdir(saveFile.getParentFile());
+            //上传
+            file.transferTo(saveFile);
+            //保存外部配置
+            FileConfigUtils.saveFileConfigBean(filePath, fileName, Integer.parseInt(split[1]));
+            return ResponseUtil.success("上传成功");
+        } catch (IOException e) {
+            LOG.error("文件上传异常", e);
+            return ResponseUtil.error("文件上传异常");
         }
     }
 

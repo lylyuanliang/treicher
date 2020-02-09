@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>配置</title>
+    <header th:replace="fragment/common/import_css::css_fragment_layui"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_common"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_index"></header>
+    <header th:replace="fragment/common/import_css::css_fragment_count"></header>
+</head>
+<body th:name="config">
+
+<div name="config_outer">
+    <div style="margin-bottom: 4%;"><span>设置最大自变量水平：</span><input id="realNums"/><span></span></div>
+    <div class="layui-upload-drag ope" id="config">
+        <i class="layui-icon"></i>
+        <p>点击上传，或将文件拖拽到此处</p>
+        <div class="layui-hide" id="uploadDemoView">
+            <hr>
+            <img src="" alt="上传成功后渲染" style="max-width: 196px">
+        </div>
+    </div>
+    <div class="layui-upload">
+        <div class="layui-upload-list">
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th style="width: 16%;">文件名</th>
+                    <th style="width: 16%;">大小</th>
+                    <th style="width: 16%;">状态</th>
+                    <th style="width: 16%;">操作</th>
+                </tr>
+                </thead>
+                <tbody id="demoList"></tbody>
+            </table>
+        </div>
+        <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+    </div>
+</div>
+
+<footer th:replace="fragment/common/import_js::js_fragment_common"></footer>
+<footer th:replace="fragment/common/import_js::js_fragment_config"></footer>
+</body>
+</html>

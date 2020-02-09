@@ -163,6 +163,33 @@ thead th {
     text-align: center;
 }
 
+[name="config_outer"] {
+    width: 24%;
+    height: 18%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+[name="config"] {
+    z-index: 1;
+}
+[name="config"] table {
+    width: 100%;
+}
+[name="config"] input {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #3f51b591;
+    text-align: center;
+    width: 35%;
+}
+.ope {
+    background-color: rgb(116, 216, 231);
+}
+
 .virtual-tips {
     width: 37%;
     height: 3%;

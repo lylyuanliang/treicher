@@ -45,6 +45,6 @@ public class OtherConstants {
         /**
          * 导出路径
          */
-        public static final String path = "D:/zoumi/excel/";
+        public static final String path = "/excel/";
     }
 }
