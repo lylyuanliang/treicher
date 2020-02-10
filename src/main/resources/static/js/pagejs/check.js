@@ -90,8 +90,6 @@ export default class Check {
                 }
             });
 
-            // 修改 为true
-            flag = true;
             if (flag) {
                 this.goLoginPage();
             }
