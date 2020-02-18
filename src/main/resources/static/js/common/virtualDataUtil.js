@@ -22,10 +22,10 @@ export default class VirtualDataUtil {
      */
     static getSequenceDetail(userNum) {
         let sequenceDetail = [];
-        $.each(Constants.VIRTUAL_DATA.PART, function (index, sequence) {
+        $.each(Constants.VIRTUAL_DATA.SEQUENCE, function (index, sequence) {
             if(sequence.USER_NUM == userNum) {
                 //找到顺序
-                sequenceDetail = sequence.PART_DETAIL;
+                sequenceDetail = sequence.SEQUENCE_DETAIL;
                 return false;
             }
         });
@@ -43,7 +43,7 @@ export default class VirtualDataUtil {
         let sequenceDetail = this.getSequenceDetail(userNum);
         let partNum = this.getPartNum(testNum);
         $.each(sequenceDetail, function (index, detail) {
-            if(detail.PART_NUM == partNum) {
+            if(detail.SEQUENCE_NUM == partNum) {
                 //找到
                 sequenceNum = detail.SEQUENCE_NUM;
                 return false;
