@@ -1,10 +1,8 @@
 package com.zoumi.treicher.controller;
 
+import com.zoumi.treicher.bean.FileConfigBean;
 import com.zoumi.treicher.bean.VirtualDataBean;
-import com.zoumi.treicher.common.ExcelUtil;
-import com.zoumi.treicher.common.OtherConstants;
-import com.zoumi.treicher.common.ResponseUtil;
-import com.zoumi.treicher.common.ViewPageConstants;
+import com.zoumi.treicher.common.*;
 import com.zoumi.treicher.service.IUserService;
 import com.zoumi.treicher.property.ExcelProperty;
 import com.zoumi.treicher.vo.UserVo;
@@ -109,14 +107,18 @@ public class ViewController extends BaseController {
     @GetMapping("/virtual")
     public ModelAndView virtual(ModelAndView modelAndView) {
         String res ;
+        Integer realTestNums = null;
         try {
             String virtualData = virtualDataBean.getVirtualDataVos();
+            FileConfigBean configFromOutSide = FileConfigUtils.getConfigFromOutSide();
+            realTestNums = configFromOutSide.getRealTestNums();
             res = ResponseUtil.success(virtualData);
         }catch (Exception e) {
             LOG.error("展示虚拟数据异常", e);
             res = ResponseUtil.error("数据获取异常");
         }
         modelAndView.addObject("virtualRes", res);
+        modelAndView.addObject("realTestNums", realTestNums);
         modelAndView.setViewName(ViewPageConstants.VIRTUAL.getUrl());
         return  modelAndView;
     }

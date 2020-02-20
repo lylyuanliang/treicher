@@ -41,9 +41,9 @@ export default class VirtualDataUtil {
     static getSequenceNUm(testNum, userNum) {
         let sequenceNum = "";
         let sequenceDetail = this.getSequenceDetail(userNum);
-        let partNum = this.getPartNum(testNum);
+        // let partNum = this.getPartNum(testNum);
         $.each(sequenceDetail, function (index, detail) {
-            if(detail.SEQUENCE_NUM == partNum) {
+            if(detail.TEST_NUM == testNum) {
                 //找到
                 sequenceNum = detail.SEQUENCE_NUM;
                 return false;
@@ -58,6 +58,7 @@ export default class VirtualDataUtil {
      */
     static getPartNum(testNum) {
         let list = this.getVirtualDataFromService();
+        debugger;
         return this.countNotNUll(list, testNum);
     }
 
@@ -169,6 +170,7 @@ export default class VirtualDataUtil {
      */
     static countNotNUll(list, index) {
         let partNum = 0;
+        debugger;
         $.each(list, function (i, data) {
             if(i <= index && data.SEQUENCE_NUM) {
                 partNum ++;

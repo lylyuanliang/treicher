@@ -15,6 +15,7 @@ class Virtual {
     constructor() {
         //virtualRes 这个值通过tymeleaf获取，在virtual.html底部
         this.virtualRes = virtualRes;
+        this.realTestNums = realTestNums;
     }
 
     bindEvent() {
@@ -40,7 +41,7 @@ class Virtual {
         if(!testNum || !personNum) {
             return ;
         }
-        personNum = parseInt(personNum) % 4;
+        personNum = parseInt(personNum) % this.realTestNums;
         //数据编号，从1到5
         let pNum = 1;
         let tBody = $("#result tbody");
