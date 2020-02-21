@@ -58,7 +58,7 @@ const RTN_CODE = {
  * 最大试次 10次
  * @type {number}
  */
-const MAX_TEST_NUM = 10;
+const MAX_TEST_NUM = 16;
 
 /**
  * 是否有空 index，对应虚拟被试数据excel里面 自变量水平是否有空值，默认false
