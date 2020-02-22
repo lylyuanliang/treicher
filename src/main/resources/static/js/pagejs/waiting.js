@@ -10,7 +10,7 @@ export default class Waiting {
      * 构造函数
      */
     constructor() {
-        this.timeOut = 1;
+        this.timeOut = 4 * 1000;
         this.result = new Result();
         this.getIndexUrl = Common.getContextPath() + "/getIndex";
     }

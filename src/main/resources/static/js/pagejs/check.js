@@ -15,7 +15,7 @@ export default class Check {
     init(valid) {
         this.bindClick4Button();
         //表单验证，
-        this.validObj = new Valid({});
+        this.validObj = new Valid(this.validInput());
     }
 
 
@@ -89,9 +89,6 @@ export default class Check {
                     return false;
                 }
             });
-
-            //临时修改，跳过验证
-            flag = true;
 
             if (flag) {
                 this.goLoginPage();
