@@ -22,10 +22,10 @@ export default class VirtualDataUtil {
      */
     static getSequenceDetail(userNum) {
         let sequenceDetail = [];
-        $.each(Constants.VIRTUAL_DATA.SEQUENCE, function (index, sequence) {
+        $.each(Constants.VIRTUAL_DATA.PART, function (index, sequence) {
             if(sequence.USER_NUM == userNum) {
                 //找到顺序
-                sequenceDetail = sequence.SEQUENCE_DETAIL;
+                sequenceDetail = sequence.PART_DETAIL;
                 return false;
             }
         });
@@ -41,9 +41,9 @@ export default class VirtualDataUtil {
     static getSequenceNUm(testNum, userNum) {
         let sequenceNum = "";
         let sequenceDetail = this.getSequenceDetail(userNum);
-        // let partNum = this.getPartNum(testNum);
+        let partNum = this.getPartNum(testNum);
         $.each(sequenceDetail, function (index, detail) {
-            if(detail.TEST_NUM == testNum) {
+            if(detail.PART_NUM == partNum) {
                 //找到
                 sequenceNum = detail.SEQUENCE_NUM;
                 return false;
@@ -58,7 +58,6 @@ export default class VirtualDataUtil {
      */
     static getPartNum(testNum) {
         let list = this.getVirtualDataFromService();
-        debugger;
         return this.countNotNUll(list, testNum);
     }
 
@@ -101,6 +100,7 @@ export default class VirtualDataUtil {
         let _this = this;
         let virtualData = this.getVirtualDataFromService();
         let virtualDataList = _this.getValueInList(virtualData, sequenceNum);
+        debugger;
         //增加一个逻辑，如果sequenceNum在 virtualData中没有找到，则返回 sequenceNum = testNum 的数据
         if(testNum) {
             let seqIsNull = _this.isNullIndex(virtualData, testNum);
@@ -170,7 +170,6 @@ export default class VirtualDataUtil {
      */
     static countNotNUll(list, index) {
         let partNum = 0;
-        debugger;
         $.each(list, function (i, data) {
             if(i <= index && data.SEQUENCE_NUM) {
                 partNum ++;
@@ -209,6 +208,7 @@ export default class VirtualDataUtil {
      * 获取虚拟数据详情(入参不一样)
      */
     static getVirtualDataDetailAnother(userNum, testNum, index) {
+        debugger;
         let sequenceNum = this.getSequenceNUm(testNum, userNum);
         let virtualDataDetail = this.getVirtualDataDetail(sequenceNum, index, testNum);
         return virtualDataDetail;

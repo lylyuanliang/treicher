@@ -1,3 +1,3 @@
 filePath=/data/
-fileName=虚拟被试数据.xlsx
-realTestNums=16
+fileName=虚拟被试数据 (利己组)(4).xlsx
+realTestNums=4
