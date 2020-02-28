@@ -110,7 +110,7 @@ export default class Result {
                 commonalityTotal += parseInt(commonalityVirtual);
                 td = $(`<td><span>${userName}</span>向公共池投入<input value="${commonalityVirtual}">个，向个人池投入<input value="${personalVirtual}">个</td>`);
             } else {
-                td = $(`<td><span>【你】</span>向公共池投入<input value="${commonality}">个，向个人池投入<input value="${personal}">个</td>`);
+                td = $(`<td style="display: none"><span>【你】</span>向公共池投入<input value="${commonality}">个，向个人池投入<input value="${personal}">个</td>`);
             }
             tr.append(td);
             $("#result-detail").append(tr);

@@ -40,7 +40,7 @@ export default class Waiting {
                         $("[name=waiting]").hide();
                         $("[name=result]").show();
                         _this.result.buildTable(personal, commonality, other, testNum, index);
-                    }, timeOut)
+                    }, 0)
                 }else {
                     Common.showMessage(data["returnMessage"]);
                 }

@@ -10,7 +10,7 @@ export default class Ready {
     constructor() {}
 
     init(valid) {
-        Common.showMessage("10后自动准备");
+        //Common.showMessage("10后自动准备");
         this.bindClick4Button();
         this.toReady4Others();
         valid['readyValid'] = this.valid;

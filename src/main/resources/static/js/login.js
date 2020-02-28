@@ -95,7 +95,8 @@ class Login {
                             Common.showMessage(res["returnMessage"]);
                         }
                     });
-                    _this.gotoTransitionPage();
+                    // _this.gotoTransitionPage();
+                    _this.gotoNextPage();
                 }else {
                     Common.showMessage(data["returnMessage"]);
                 }
@@ -176,5 +177,9 @@ class Login {
      */
     gotoTransitionPage() {
         window.location.href = `${Common.getContextPath()}/transition`;
+    }
+
+    gotoNextPage() {
+        window.location.href = `${Common.getContextPath()}/treicher`;
     }
 }

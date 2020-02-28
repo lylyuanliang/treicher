@@ -28,18 +28,28 @@ const ROUTER = {
          */
         5: "check"
     },
+    // /**
+    //  * 实验页面路由
+    //  */
+    // ROUTER_TREICHER: {
+    //     /**
+    //      * 准备页面
+    //      */
+    //     1: "ready",
+    //     /**
+    //      * 实验测试 页面
+    //      */
+    //     2: "testing"
+    // }
+
     /**
      * 实验页面路由
      */
     ROUTER_TREICHER: {
         /**
-         * 准备页面
-         */
-        1: "ready",
-        /**
          * 实验测试 页面
          */
-        2: "testing"
+        1: "testing"
     }
 };
 

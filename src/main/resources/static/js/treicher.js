@@ -33,7 +33,7 @@ class Treicher {
 
         button.init(this.valid);
 
-        ready.init(this.valid);
+        // ready.init(this.valid);
 
         tips.init();
         testing.init();
@@ -66,7 +66,8 @@ class Treicher {
                             if(Constants.RTN_CODE.SUCCESS != resCode) {
                                 Common.showMessage(res["returnMessage"]);
                             }else {
-                                window.location.href = Common.getContextPath() + "/transition";
+                                // window.location.href = Common.getContextPath() + "/transition";
+                                window.location.href = Common.getContextPath() + "/treicher";
                             }
                         });
                     }
